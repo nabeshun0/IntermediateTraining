@@ -19,25 +19,32 @@ class CompaniesController: UITableViewController, CreateCompanyControlelrDelegat
 
     var companies = [Company]() // empty array
 
-    // let: constant
-    // var: variabled that can be modified
-//    var companies = [
-//        Company(name: "Apple", founded: Date()),
-//        Company(name: "Google", founded: Date()),
-//        Company(name: "Facebook", founded: Date()),
-//    ]
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            let company = self.companies[indexPath.row]
+            print("Attempting to delete company:", company.name ?? "")
 
-//    func addCompany(company: Company) {
-////        let tesla = Company(name: "Tesla", founded: Date())
-//
-//        //1 - modify your array
-//        companies.append(company)
-//
-//        //2 - insert a new index path into tableview
-//        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
-//        print("newIndexPath:",newIndexPath)
-//        tableView.insertRows(at: [newIndexPath], with: .automatic)
-//    }
+            // remove the company from our tableview
+            self.companies.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            // delete the company from Core Data
+            let context  = CoreDataManager.shared.pesistentContainer.viewContext
+
+            context.delete(company)
+
+            do {
+                try context.save()
+            } catch let saveErr {
+                print("Failed to delete company:", saveErr)
+            }
+        }
+
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
+            print("Editing company...")
+        }
+        return [deleteAction, editAction]
+    }
 
     private func fetchCompanies() {
         // attempt my core data fetch somehow..
