@@ -13,6 +13,7 @@
 		5E5A5C752470CC380093A086 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5A5C732470CC380093A086 /* Main.storyboard */; };
 		5E5A5C772470CC390093A086 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E5A5C762470CC390093A086 /* Assets.xcassets */; };
 		5E5A5C7A2470CC390093A086 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5A5C782470CC390093A086 /* LaunchScreen.storyboard */; };
+		5E91B6632470E7250091F5CB /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E91B6622470E7250091F5CB /* UIColor+theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5E5A5C762470CC390093A086 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E5A5C792470CC390093A086 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E5A5C7B2470CC390093A086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E91B6622470E7250091F5CB /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				5E5A5C762470CC390093A086 /* Assets.xcassets */,
 				5E5A5C782470CC390093A086 /* LaunchScreen.storyboard */,
 				5E5A5C7B2470CC390093A086 /* Info.plist */,
+				5E91B6622470E7250091F5CB /* UIColor+theme.swift */,
 			);
 			path = IntermediateTraining;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E5A5C722470CC380093A086 /* ViewController.swift in Sources */,
+				5E91B6632470E7250091F5CB /* UIColor+theme.swift in Sources */,
 				5E5A5C6E2470CC380093A086 /* AppDelegate.swift in Sources */,
 				5E5A5C702470CC380093A086 /* SceneDelegate.swift in Sources */,
 			);
