@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E48C28B247157D4001D513F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E48C28A247157D4001D513F /* CoreDataManager.swift */; };
 		5E5A5C6E2470CC380093A086 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A5C6D2470CC380093A086 /* AppDelegate.swift */; };
 		5E5A5C702470CC380093A086 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A5C6F2470CC380093A086 /* SceneDelegate.swift */; };
 		5E5A5C722470CC380093A086 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5A5C712470CC380093A086 /* CompaniesController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E48C28A247157D4001D513F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E5A5C6A2470CC380093A086 /* IntermediateTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntermediateTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5A5C6D2470CC380093A086 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E5A5C6F2470CC380093A086 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				5E91B6642470EDC60091F5CB /* Company.swift */,
 				5E91B6662470F9AD0091F5CB /* CreateCompanyController.swift */,
 				5E91B6682471437D0091F5CB /* IntermediateTrainingModels.xcdatamodeld */,
+				5E48C28A247157D4001D513F /* CoreDataManager.swift */,
 			);
 			path = IntermediateTraining;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				5E5A5C6E2470CC380093A086 /* AppDelegate.swift in Sources */,
 				5E91B6652470EDC60091F5CB /* Company.swift in Sources */,
 				5E5A5C702470CC380093A086 /* SceneDelegate.swift in Sources */,
+				5E48C28B247157D4001D513F /* CoreDataManager.swift in Sources */,
 				5E91B6672470F9AD0091F5CB /* CreateCompanyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
