@@ -8,16 +8,36 @@
 
 import UIKit
 
-class CompaniesController: UITableViewController {
+class CompaniesController: UITableViewController, CreateCompanyControlelrDelegate {
 
-    let companies = [
+    func didAddCompany(company: Company) {
+        companies.append(company)
+        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+
+    var companies = [
         Company(name: "Apple", founded: Date()),
         Company(name: "Google", founded: Date()),
         Company(name: "Facebook", founded: Date()),
     ]
 
+//    func addCompany(company: Company) {
+////        let tesla = Company(name: "Tesla", founded: Date())
+//
+//        //1 - modify your array
+//        companies.append(company)
+//
+//        //2 - insert a new index path into tableview
+//        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+//        print("newIndexPath:",newIndexPath)
+//        tableView.insertRows(at: [newIndexPath], with: .automatic)
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "TEST ADD", style: .plain, target: self, action: #selector(addCompany))
 
         view.backgroundColor = .white
 
@@ -41,6 +61,9 @@ class CompaniesController: UITableViewController {
 
         let navController = CustomNavigationController(rootViewController: createCompanyController)
         navController.modalPresentationStyle = .fullScreen
+
+        createCompanyController.delegate = self
+
         present(navController, animated: true, completion: nil)
     }
 
