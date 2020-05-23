@@ -13,9 +13,16 @@ import CoreData
 
 protocol CreateCompanyControlelrDelegate {
     func didAddCompany(company: Company)
+    func didEditCompany(company: Company)
 }
 
 class CreateCompanyController: UIViewController {
+
+    var company: Company? {
+        didSet {
+            nameTextField.text = company?.name
+        }
+    }
 
     // not tightly-coupled
     var delegate: CreateCompanyControlelrDelegate?
@@ -37,6 +44,13 @@ class CreateCompanyController: UIViewController {
         return textField
     }()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // ternary syntax
+        navigationItem.title = company == nil ? "Create Company" : "Edit Company"
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,19 +65,32 @@ class CreateCompanyController: UIViewController {
         view.backgroundColor = .darkBlue
     }
 
-    @objc func handleSave() {
+    @objc private func handleSave() {
+        if company == nil {
+            createCompany()
+        } else {
+            saveCompanyChanges()
+        }
+    }
+
+    private func saveCompanyChanges() {
+        let context = CoreDataManager.shared.pesistentContainer.viewContext
+        company?.name = nameTextField.text
+
+        do {
+            try context.save()
+
+            // save succeeded
+            dismiss(animated: true, completion: {
+                self.delegate?.didEditCompany(company: self.company!)
+            })
+        } catch let saveErr {
+            print("Failed to save company changes:", saveErr)
+        }
+    }
+
+    private func createCompany() {
         print("Trying to save company...")
-
-        // initialization of our Core Data stock
-
-//        let persistentContainer = NSPersistentContainer(name: "IntermediateTrainingModels")
-//        persistentContainer.loadPersistentStores { (storeDescription, err) in
-//            if let err = err {
-//                fatalError("Loading of store failed: \(err)")
-//            }
-//        }
-//        let context = persistentContainer.viewContext
-
         let context = CoreDataManager.shared.pesistentContainer.viewContext
 
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)

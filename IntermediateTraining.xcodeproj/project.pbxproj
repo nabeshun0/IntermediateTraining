@@ -66,7 +66,6 @@
 		5E5A5C6C2470CC380093A086 /* IntermediateTraining */ = {
 			isa = PBXGroup;
 			children = (
-				5E5A5C712470CC380093A086 /* CompaniesController.swift */,
 				5E5A5C6D2470CC380093A086 /* AppDelegate.swift */,
 				5E5A5C6F2470CC380093A086 /* SceneDelegate.swift */,
 				5E5A5C732470CC380093A086 /* Main.storyboard */,
@@ -75,6 +74,7 @@
 				5E5A5C7B2470CC390093A086 /* Info.plist */,
 				5E91B6622470E7250091F5CB /* UIColor+theme.swift */,
 				5E91B6642470EDC60091F5CB /* Company.swift */,
+				5E5A5C712470CC380093A086 /* CompaniesController.swift */,
 				5E91B6662470F9AD0091F5CB /* CreateCompanyController.swift */,
 				5E91B6682471437D0091F5CB /* IntermediateTrainingModels.xcdatamodeld */,
 				5E48C28A247157D4001D513F /* CoreDataManager.swift */,
