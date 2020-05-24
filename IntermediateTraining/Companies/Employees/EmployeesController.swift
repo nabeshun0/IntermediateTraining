@@ -26,20 +26,22 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
 
     private func fetchEmployees() {
-        print("Trying to fetch employees..")
-
-        let context = CoreDataManager.shared.pesistentContainer.viewContext
-
-        let request = NSFetchRequest<Employee>(entityName: "Employee")
-
-        do {
-            let employees = try context.fetch(request)
-
-            self.employees = employees
-//            employees.forEach{print("Employee name:", $0.name ?? "")}
-        } catch let err {
-            print("Failed to fetch employees:", err)
-        }
+        guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
+        self.employees = companyEmployees
+//        print("Trying to fetch employees..")
+//
+//        let context = CoreDataManager.shared.pesistentContainer.viewContext
+//
+//        let request = NSFetchRequest<Employee>(entityName: "Employee")
+//
+//        do {
+//            let employees = try context.fetch(request)
+//
+//            self.employees = employees
+////            employees.forEach{print("Employee name:", $0.name ?? "")}
+//        } catch let err {
+//            print("Failed to fetch employees:", err)
+//        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,6 +84,7 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
 
         let createEmployeeController = CreateEmployeeController()
         createEmployeeController.delegate = self
+        createEmployeeController.company = company
         let navController = UINavigationController(rootViewController: createEmployeeController)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
