@@ -120,7 +120,7 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
 
         navigationItem.title = "Create Company"
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        setupCancelButton()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
 
@@ -224,9 +224,5 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
         datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         datePicker.bottomAnchor.constraint(equalTo: lightBlueBackgroundView.bottomAnchor).isActive = true
 
-    }
-
-    @objc func handleCancel() {
-        dismiss(animated: true, completion: nil)
     }
 }
