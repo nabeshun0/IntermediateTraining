@@ -34,4 +34,22 @@ struct CoreDataManager {
             return []
         }
     }
+
+    func createEmployee(employeeName: String) -> Error? {
+        let context = pesistentContainer.viewContext
+
+        //create an employee
+        let employee = NSEntityDescription.insertNewObject(forEntityName: "Employee", into: context)
+
+        employee.setValue(employeeName, forKey: "name")
+
+        do {
+            try context.save()
+            // save suceeds
+            return nil
+        } catch let err {
+            print("Failed to create employee:", err)
+            return err
+        }
+    }
 }
