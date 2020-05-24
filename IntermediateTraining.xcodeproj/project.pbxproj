@@ -95,6 +95,15 @@
 			path = IntermediateTraining;
 			sourceTree = "<group>";
 		};
+		5E6DB093247A7BF2003E70BD /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				5E7B1A8D247A355700C98078 /* EmployeesController.swift */,
+				5E7B1A92247A3A5100C98078 /* CreateEmployeeController.swift */,
+			);
+			path = Employees;
+			sourceTree = "<group>";
+		};
 		5E7B1A8F247A38D600C98078 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,12 +115,11 @@
 		5EA394F224796F1700D6309D /* Companies */ = {
 			isa = PBXGroup;
 			children = (
+				5E6DB093247A7BF2003E70BD /* Employees */,
 				5E5A5C712470CC380093A086 /* CompaniesController.swift */,
 				5EA394F324796F3D00D6309D /* CompanyCell.swift */,
-				5E7B1A89247A1FB100C98078 /* CompaniesController+CreateCompany.swift */,
 				5E7B1A8B247A233500C98078 /* CompaniesController+UITableView.swift */,
-				5E7B1A8D247A355700C98078 /* EmployeesController.swift */,
-				5E7B1A92247A3A5100C98078 /* CreateEmployeeController.swift */,
+				5E7B1A89247A1FB100C98078 /* CompaniesController+CreateCompany.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
