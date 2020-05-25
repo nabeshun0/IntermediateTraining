@@ -9,6 +9,16 @@
 import UIKit
 import CoreData
 
+// lets create a UILabel subclass for custom text drawing
+class IndentLabel: UILabel {
+
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        let customRect = rect.inset(by: insets)
+        super.drawText(in: customRect)
+    }
+}
+
 class EmployeesController: UITableViewController, CreateEmployeeControllerDelegate {
 
     func didAddEmployee(employee: Employee) {
@@ -25,33 +35,89 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
         navigationItem.title = company?.name
     }
 
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = IndentLabel()
+        if section == 0 {
+            label.text = "Short names"
+        } else if section == 1 {
+            label.text = "Long names"
+        } else {
+            label.text = "Really Long names"
+        }
+        label.backgroundColor = UIColor.lightBlue
+        label.textColor = UIColor.darkBlue
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    var shortNameEmployees = [Employee]()
+    var longNameEmployees = [Employee]()
+    var reallyLongNameEmployees = [Employee]()
+
+    var allEmployees = [[Employee]]()
+
     private func fetchEmployees() {
         guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
-        self.employees = companyEmployees
-//        print("Trying to fetch employees..")
-//
-//        let context = CoreDataManager.shared.pesistentContainer.viewContext
-//
-//        let request = NSFetchRequest<Employee>(entityName: "Employee")
-//
-//        do {
-//            let employees = try context.fetch(request)
-//
-//            self.employees = employees
-////            employees.forEach{print("Employee name:", $0.name ?? "")}
-//        } catch let err {
-//            print("Failed to fetch employees:", err)
-//        }
+        
+        shortNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count < 6
+            }
+            return false
+        })
+
+        longNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count > 6 && count < 9
+            }
+            return false
+        })
+
+        reallyLongNameEmployees = companyEmployees.filter({ (employee) -> Bool in
+            if let count = employee.name?.count {
+                return count < 9
+            }
+            return false
+        })
+
+        allEmployees = [
+            shortNameEmployees,
+            longNameEmployees,
+            reallyLongNameEmployees
+        ]
+
+        print(shortNameEmployees.count, longNameEmployees.count, reallyLongNameEmployees.count)
+//        self.employees = companyEmployees
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return allEmployees.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return employees.count
+        return allEmployees[section].count
+//        if section == 0 {
+//            return shortNameEmployees.count
+//        }
+//        return longNameEmployees.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
 
-        let employee = employees[indexPath.row]
+//        if indexPath.section == 0 {
+//            employee = shortName
+//        }
+
+        // i will use ternary operator
+//        let employee = indexPath.section == 0 ? shortNameEmployees[indexPath.row] : longNameEmployees[indexPath.row]
+
+        let employee = allEmployees[indexPath.section][indexPath.row]
+
         cell.textLabel?.text = employee.name
 
         if let birthday = employee.employeeInformation?.birthday {
