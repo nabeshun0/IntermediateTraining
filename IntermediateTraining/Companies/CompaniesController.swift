@@ -13,12 +13,48 @@ class CompaniesController: UITableViewController {
 
     var companies = [Company]() // empty array
 
+    @objc func doWork() {
+        print("Trying to do work...")
+
+
+        CoreDataManager.shared.pesistentContainer.performBackgroundTask { (backgroundContext) in
+
+            (0...20000).forEach { (value) in
+                print(value)
+                let company = Company(context: backgroundContext)
+                company.name = String(value)
+
+                do {
+                    try backgroundContext.save()
+                } catch let err {
+                    print("Failed to save:", err)
+                }
+            }
+        }
+
+        // GCD - Grand Central Dispatch
+        DispatchQueue.global(qos: .background).async {
+
+            // creating some Company objects on a background thread
+
+//            let context = CoreDataManager.shared.pesistentContainer.viewContext
+
+            //NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.companies = CoreDataManager.shared.fetchCompanies()
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
+
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset)),
+            UIBarButtonItem(title: "Do Work", style: .plain, target: self, action: #selector(doWork))
+        ]
+
 
         view.backgroundColor = .white
 
