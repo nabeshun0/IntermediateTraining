@@ -26,6 +26,7 @@
 		5E9AE63F2480D3FF00122DAA /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9AE63E2480D3FF00122DAA /* EmployeeType.swift */; };
 		5EA394F424796F3D00D6309D /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA394F324796F3D00D6309D /* CompanyCell.swift */; };
 		D2A40DDD2584D08A005BE08D /* CompaniesAutoUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A40DDC2584D08A005BE08D /* CompaniesAutoUpdateController.swift */; };
+		D2A40DDF2584F48D005BE08D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A40DDE2584F48D005BE08D /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		5E9AE63E2480D3FF00122DAA /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
 		5EA394F324796F3D00D6309D /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		D2A40DDC2584D08A005BE08D /* CompaniesAutoUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesAutoUpdateController.swift; sourceTree = "<group>"; };
+		D2A40DDE2584F48D005BE08D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				5E7B1A89247A1FB100C98078 /* CompaniesController+CreateCompany.swift */,
 				5E91B6662470F9AD0091F5CB /* CreateCompanyController.swift */,
 				D2A40DDC2584D08A005BE08D /* CompaniesAutoUpdateController.swift */,
+				D2A40DDE2584F48D005BE08D /* Service.swift */,
 			);
 			path = Companies;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				5EA394F424796F3D00D6309D /* CompanyCell.swift in Sources */,
 				5E91B6652470EDC60091F5CB /* Company.swift in Sources */,
 				5E7B1A8E247A355700C98078 /* EmployeesController.swift in Sources */,
+				D2A40DDF2584F48D005BE08D /* Service.swift in Sources */,
 				5E5A5C702470CC380093A086 /* SceneDelegate.swift in Sources */,
 				5E48C28B247157D4001D513F /* CoreDataManager.swift in Sources */,
 				5E91B6672470F9AD0091F5CB /* CreateCompanyController.swift in Sources */,
