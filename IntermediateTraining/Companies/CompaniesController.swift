@@ -17,7 +17,7 @@ class CompaniesController: UITableViewController {
         print("Trying to do work...")
 
 
-        CoreDataManager.shared.pesistentContainer.performBackgroundTask { (backgroundContext) in
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { (backgroundContext) in
 
             (0...5).forEach { (value) in
                 print(value)
@@ -52,7 +52,7 @@ class CompaniesController: UITableViewController {
     @objc private func doUpdates() {
         print("Trying to update companies on a background context")
 
-        CoreDataManager.shared.pesistentContainer.performBackgroundTask { (backgroundContext) in
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { (backgroundContext) in
 
             let request: NSFetchRequest<Company> = Company.fetchRequest()
 
@@ -72,7 +72,7 @@ class CompaniesController: UITableViewController {
 
                     DispatchQueue.main.async {
                         // reset will forget all of the objects you`ve fetch before
-                        CoreDataManager.shared.pesistentContainer.viewContext.reset()
+                        CoreDataManager.shared.persistentContainer.viewContext.reset()
 
                         // you don`t want to refetch everything if you`re just simply update one or two companies
                         self.companies = CoreDataManager.shared.fetchCompanies()
@@ -99,7 +99,7 @@ class CompaniesController: UITableViewController {
             // we`ll first construct a custom MOC
 
             let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-            privateContext.parent = CoreDataManager.shared.pesistentContainer.viewContext
+            privateContext.parent = CoreDataManager.shared.persistentContainer.viewContext
 
             // execute updates on privateContext now
             let request: NSFetchRequest<Company> = Company.fetchRequest()
@@ -120,7 +120,7 @@ class CompaniesController: UITableViewController {
                     DispatchQueue.main.async {
 
                         do {
-                            let context = CoreDataManager.shared.pesistentContainer.viewContext
+                            let context = CoreDataManager.shared.persistentContainer.viewContext
 
                             if context.hasChanges {
                                 try context.save()
@@ -176,7 +176,7 @@ class CompaniesController: UITableViewController {
     @objc private func handleReset() {
         print("Attempting to delete all core data objects")
 
-        let context = CoreDataManager.shared.pesistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
 
         companies.forEach { (company) in
             context.delete(company)

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 // lets create a UILabel subclass for custom text drawing
-class IndentLabel: UILabel {
+class IndentedLabel: UILabel {
 
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
@@ -44,7 +44,7 @@ class EmployeesController: UITableViewController, CreateEmployeeControllerDelega
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = IndentLabel()
+        let label = IndentedLabel()
         label.text = employeeTypes[section]
         label.backgroundColor = UIColor.lightBlue
         label.textColor = UIColor.darkBlue

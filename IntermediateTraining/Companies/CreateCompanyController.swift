@@ -136,7 +136,7 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
     }
 
     private func saveCompanyChanges() {
-        let context = CoreDataManager.shared.pesistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
 
         company?.name = nameTextField.text
         company?.founded = datePicker.date
@@ -160,7 +160,7 @@ class CreateCompanyController: UIViewController, UINavigationControllerDelegate,
 
     private func createCompany() {
         print("Trying to save company...")
-        let context = CoreDataManager.shared.pesistentContainer.viewContext
+        let context = CoreDataManager.shared.persistentContainer.viewContext
 
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
 
